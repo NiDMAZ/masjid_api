@@ -21,13 +21,17 @@ class JummahKhateebReader(GoogleSheetReader):
     def get_jummah_date(self, date_time=datetime.datetime.now()):
         assert type(date_time) == datetime.datetime, "Only accepts {}, received {}".format(datetime.datetime,
                                                                                            type(date_time))
-        if date_time.isoweekday() < 5:
+        isoweekday = date_time.isoweekday()
+
+        if isoweekday < 5:
             # print 'Its before Friday'
-            return (date_time + timedelta(days=5 - date_time.isoweekday())).date()
-        elif date_time.isoweekday() > 5:
+            delta = timedelta(days=5 - isoweekday)
+            new_date = date_time + delta
+            return new_date.date()
+        elif isoweekday > 5:
             # print 'Its after Friday'
-            return (date_time + timedelta(days=(7 - date_time.isoweekday()) + 5)).date()
-        elif date_time.isoweekday() == 5:
+            return (date_time + timedelta(days=(7 - isoweekday) + 5)).date()
+        elif isoweekday == 5:
             # print 'Its Friday'
             if type(date_time) == datetime.datetime:
                 if date_time.hour >= 14:

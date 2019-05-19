@@ -1,0 +1,15 @@
+pyyaml==5.1
+libgfortran==3.0.1
+sqlite==3.26.0
+cryptography==2.6.1
+libcxxabi==4.0.1
+libffi==3.2.1
+zlib==1.2.11
+yaml==0.1.7
+openblas==0.3.5
+readline==7.0
+cffi==1.12.2
+ncurses==6.1
+openssl==1.1.1b
+libcxx==4.0.1
+tk==8.6.9
